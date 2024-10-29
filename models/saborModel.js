@@ -11,7 +11,7 @@ const Sabor = sequelize.define("Sabor", {
         type: DataTypes.STRING,
         allowNull: false
     },
-    urlImagem: {
+    imagemUrl: {
         type: DataTypes.STRING,
         allowNull: true
     }, 

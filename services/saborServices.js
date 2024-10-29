@@ -14,13 +14,13 @@ async function obterSabores() {
 
 async function cadastrarSabor(dados) {
     // const {nome, sabores, dataRetirada, horaRetirada, tipo, quantidade, entrega, endereco} = dados
-    const {nome, descricao, urlImagem} = dados
+    const {nome, descricao, imagemUrl} = dados
 
     try {
         const saborCadastrado = await Sabor.create({
             nome,
             descricao,
-            urlImagem
+            imagemUrl
         })
 
         return saborCadastrado

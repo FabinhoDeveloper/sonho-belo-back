@@ -11,10 +11,11 @@ async function obterSabores(req, res) {
   }
 }
 
-async function cadastrarSabor(params) {
+async function cadastrarSabor(req, res) {
   try {  
-    const { nome, descricao } = req.body;
-    const imagemUrl = req.file.location; 
+    const { nome, descricao, imagemUrl } = req.body;
+
+    console.log({nome, descricao, imagemUrl})
 
     const saborId = await saborService.cadastrarSabor({nome, descricao, imagemUrl});
     return res.status(201).json({ success: true, saborId });
