@@ -1,6 +1,27 @@
 const usuarioServices = require("../services/usuarioServices")
 const bcrypt_config = require("../config/bcrypt_config")
 
+async function obterUsuarios(req, res) {
+    try {
+        const lista_usuarios = await usuarioServices.obterUsuarios()
+        res.json({lista_usuarios})
+    } catch (error) {
+        console.error('Erro ao listar usuários!: ', error)
+        res.status(500).json({mensagem: 'Erro ao listar usuários!'})
+    }
+}
+
+async function obterNumeroDeUsuarios(req, res) {
+    try {
+        const lista_usuarios = await usuarioServices.obterNumeroDeUsuarios()
+        res.json({lista_usuarios})
+
+    } catch (error) {
+        console.error('Erro ao listar número de usuários!: ', error)
+        res.status(500).json({mensagem: 'Erro ao listar número de usuários!'})
+    }
+}
+
 async function loginUsuario(req, res) {
     const {email, senha} = req.body
     
@@ -84,4 +105,4 @@ async function excluirUsuario(req, res) {
     }
 }
 
-module.exports = {loginUsuario, cadastrarUsuario, editarUsuario, excluirUsuario}
+module.exports = {obterUsuarios, obterNumeroDeUsuarios, loginUsuario, cadastrarUsuario, editarUsuario, excluirUsuario}

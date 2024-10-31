@@ -6,5 +6,7 @@ router.post("/login", usuarioControllers.loginUsuario)
 router.post("/cadastrar", usuarioControllers.cadastrarUsuario)
 router.post("/editar", usuarioControllers.editarUsuario)
 router.post("/excluir", usuarioControllers.excluirUsuario)
+router.get("/obter-numero", usuarioControllers.obterNumeroDeUsuarios)
+router.get("/obter", usuarioControllers.obterUsuarios)
 
 module.exports = router

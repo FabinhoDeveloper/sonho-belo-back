@@ -1,6 +1,27 @@
 const Usuario = require("../models/usuarioModel")
 const bcrypt_config = require("../config/bcrypt_config");
 
+async function obterUsuarios() {
+    try {
+        const lista_usuarios = await Usuario.findAll()
+        return lista_usuarios
+    } catch (error) {
+        console.error("Erro ao buscar usuários!", error)
+        throw error
+    }
+}
+
+async function obterNumeroDeUsuarios() {
+    try {
+        const lista_usuarios = await Usuario.findAll()
+        return lista_usuarios.length
+
+    } catch (error) {
+        console.error("Erro ao buscar número de usuários!", error)
+        throw error
+    }
+}
+
 async function listarUsuarioPorEmail(dados) {
     const {email} = dados
 
@@ -90,4 +111,4 @@ async function excluirUsuario(dados) {
     }
 }
 
-module.exports = {cadastrarUsuario, listarUsuarioPorEmail, editarUsuario, excluirUsuario}
+module.exports = {cadastrarUsuario, listarUsuarioPorEmail, editarUsuario, excluirUsuario, obterNumeroDeUsuarios, obterUsuarios}

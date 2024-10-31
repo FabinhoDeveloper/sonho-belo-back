@@ -4,9 +4,9 @@ require("dotenv").config()
 // Importação das models
 
 const sequelize = require("./config/db_config")
-const Sabor = require("./models/saborModel")
+
 const Usuario = require("./models/usuarioModel")
-const Encomenda = require("./models/encomendaModel")
+const {Encomenda, Sabor} = require("./models/relacionamentos/saborEncomenda")
 
 // Importação das models
 
@@ -24,7 +24,7 @@ app.use(express.json())
 
 app.use("/sabor", saborRoutes)
 app.use("/usuario", usuarioRoutes)
-
+app.use("/encomenda", encomendaRoutes)
 
 // Sincronização do banco de dados
 
