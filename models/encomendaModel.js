@@ -30,6 +30,10 @@ const Encomenda = sequelize.define("Encomenda", {
     endereco_entrega: {
         type: DataTypes.STRING,
         allowNull: true
+    },
+    concluida: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
     }
 }, 
     {

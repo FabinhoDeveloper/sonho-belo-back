@@ -88,7 +88,7 @@ async function editarUsuario(req, res) {
 }
 
 async function excluirUsuario(req, res) {
-    const {id} = req.body
+    const {id} = req.params
 
     try {
         const usuarioDeletado = await usuarioServices.excluirUsuario({id})

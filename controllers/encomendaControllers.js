@@ -21,4 +21,21 @@ async function obterEncomendas(req, res) {
   }
 }
 
-module.exports = { cadastrarEncomenda, obterEncomendas };
+async function concluirEncomenda(req, res) {
+    const {id} = req.params
+
+    try {
+      const encomendaConcluida = await encomendaService.concluirEncomenda({id})
+
+      res.json({
+        mensagem: 'Encomenda concluida com sucesso!',
+        encomendaConcluida
+      })
+
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Erro ao concluir a encomenda.' });
+    }
+}
+
+module.exports = { cadastrarEncomenda, obterEncomendas, concluirEncomenda };

@@ -15,6 +15,10 @@ const Sabor = sequelize.define("Sabor", {
         type: DataTypes.STRING,
         allowNull: true
     }, 
+    disponivel: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true
+    }
 }, 
     {
         tableName: 'sabor',

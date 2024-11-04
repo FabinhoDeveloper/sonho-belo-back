@@ -44,5 +44,26 @@ async function obterEncomendas() {
   }
 }
 
+async function concluirEncomenda(dados) {
+  const {id} = dados
 
-module.exports = { criarEncomenda, obterEncomendas };
+  try {
+    const [linhasAtualizadas] = await Encomenda.update({
+      concluida: true
+    }, {
+      where: {id}
+    })
+
+    if (linhasAtualizadas.length === 0) {
+      throw new Error("Nenhuma linha atualizada!")
+    }
+
+    return linhasAtualizadas
+  } catch (error) {
+      console.error("Erro ao concluir encomenda: ", error);
+      throw error;  
+  }
+}
+
+
+module.exports = { criarEncomenda, obterEncomendas, concluirEncomenda };
